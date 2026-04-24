@@ -4,7 +4,7 @@ create database de001;
 use de001;
 
 -- bảng creator
-create table creator(
+create table Creator(
 	creator_id varchar(5) primary key not null,
     creator_name varchar(100) not null ,
     creator_email varchar(100) not null unique,
@@ -13,7 +13,7 @@ create table creator(
 );
 
 -- bảng studio
-create table studio(
+create table Studio(
 	studio_id varchar(5) primary key not null,
     studio__name varchar(100) not null,
     studio__location varchar(100) not null,
@@ -22,7 +22,7 @@ create table studio(
 );
 
 -- bảng livesession
-create table livesession(
+create table Livesession(
 	session_id int primary key not null auto_increment,
     creator_id varchar(5) not null,
     foreign key (creator_id) references creator (creator_id),
@@ -45,38 +45,38 @@ create table payment(
 -- thêm dữ liệu creator
 insert into creator(creator_id,creator_name,creator_email,creator_phone,creator_platform)
 values
-('cr01', 'nguyen van a','a@live.com', '0901111111', 'tiktok'),
-('cr02', 'tran thi b','b@live.com', '0902222222', 'youtube'),
-('cr03', 'le minh c','c@live.com', '0903333333', 'facebook'),
-('cr04', 'pham thi d','d@live.com', '0904444444', 'tiktok'),
-('cr05', 'vu hoang e','e@live.com', '0905555555', 'shoppee live');
+('CR01', 'Nguyen Van A','a@live.com', '0901111111', 'Tiktok'),
+('CR02', 'Tran Thi B','b@live.com', '0902222222', 'Youtube'),
+('CR03', 'Le Minh C','c@live.com', '0903333333', 'Facebook'),
+('CR04', 'Phan Thi D','d@live.com', '0904444444', 'Tiktok'),
+('cr05', 'Vu Hoang E','e@live.com', '0905555555', 'Shoppee live');
 
 -- thêm dữ liệu studio
 insert into studio(studio_id,studio__name,studio__location,hourly_price,studio_status)
 values 
-('st01','studio a','ha noi', 20.00 ,'available'),
-('st02','studio b','hcm', 25.00 ,'available'),
-('st03','studio c','danang', 30.00 ,'booked'),
-('st04','studio d','ha noi', 22.00 ,'available'),
-('st05','studio e','can tho', 18.00 ,'maintenance');
+('ST01','studio a','ha noi', 20.00 ,'Available'),
+('ST02','studio b','hcm', 25.00 ,'Available'),
+('ST03','studio c','danang', 30.00 ,'Booked'),
+('ST04','studio d','ha noi', 22.00 ,'Available'),
+('ST05','studio e','can tho', 18.00 ,'Maintenance');
 
 -- thêm dữ liệu livesession
-insert into livesession(session_id,creator_id,studio_id,session_date,duration_hours)
+insert into Livesession(session_id,creator_id,studio_id,session_date,duration_hours)
 values 
-(1, 'cr01', 'st01', '2025-05-01', 3),
-(2, 'cr02', 'st02', '2025-05-02', 4),
-(3, 'cr03', 'st03', '2025-05-03', 2),
-(4, 'cr04', 'st04', '2025-05-04', 5),
+(1, 'CR01', 'st01', '2025-05-01', 3),
+(2, 'CR02', 'st02', '2025-05-02', 4),
+(3, 'CR03', 'st03', '2025-05-03', 2),
+(4, 'CR04', 'st04', '2025-05-04', 5),
 (5, 'cr05', 'st05', '2025-05-05', 1);
 
 -- thêm dữ liệu payment
 insert into payment(payment_id,session_id,payment_method,payment_amount,payment_date)
 values 
-(1 ,1 , 'cash' ,60.00, '2025-05-01'),
-(2 ,2 , 'cash' ,100.00, '2025-05-02'),
-(3 ,3 , 'cash' ,60.00, '2025-05-03'),
-(4 ,4 , 'cash' ,110.00, '2025-05-04'),
-(5 ,5 , 'cash' ,25.00, '2025-05-05');
+(1 ,1 , 'Cash' ,60.00, '2025-05-01'),
+(2 ,2 , 'Credit Card' ,100.00, '2025-05-02'),
+(3 ,3 , 'Bank Tranfer' ,60.00, '2025-05-03'),
+(4 ,4 , 'Credit Card' ,110.00, '2025-05-04'),
+(5 ,5 , 'Cash' ,25.00, '2025-05-05');
 
 -- 3. cập nhật creator_platform của creator cr03 thành "youtube" 
 update creator
