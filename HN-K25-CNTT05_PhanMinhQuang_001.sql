@@ -33,7 +33,7 @@ create table Livesession(
 );
 
 -- bảng payment
-create table payment(
+create table Payment(
 	payment_id int primary key not null auto_increment,
     session_id  int not null,
     foreign key (session_id) references livesession(session_id),
